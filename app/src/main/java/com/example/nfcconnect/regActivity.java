@@ -19,11 +19,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+
+
 public class regActivity extends AppCompatActivity {
     EditText reguName,regemail,regPass,regnPass;
     Button rButton;
     FirebaseDatabase rootNode;
     DatabaseReference reference;
+    OkHttpClient okHttpClient=new OkHttpClient();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +59,7 @@ public class regActivity extends AppCompatActivity {
                 UserHelperClass helperClass =new UserHelperClass(name,emailId,password,NFC_Password);
                 reference.child(name).setValue(helperClass);
               //  reference.child(name).setValue(helperClass);
-
+                RequestBody formbody=new FormBody.Builder().add(name,password).build();
 
             }
         });
