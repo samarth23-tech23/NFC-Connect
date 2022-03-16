@@ -74,7 +74,7 @@ public class regActivity extends AppCompatActivity {
 
 
             //flask part
-                 RequestBody formbody=new FormBody.Builder().add("password","123456789").add("activity","register").build();
+                 RequestBody formbody=new FormBody.Builder().add("password","123456789").add("nfcpassword","samarth").add("activity","register").build();
                  Request request=new Request.Builder().url("https://karthik022.pythonanywhere.com/encrypt").post(formbody).build();
                 Toast.makeText(regActivity.this, "Encrypting...", Toast.LENGTH_SHORT).show();
                  okHttpClient.newCall(request).enqueue(new Callback() {
