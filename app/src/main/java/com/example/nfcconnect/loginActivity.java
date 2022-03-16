@@ -38,33 +38,33 @@ public class loginActivity extends AppCompatActivity {
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    String l_Name=mUsername.getText().toString();
-                    String l_password=mPassword.getText().toString();
+                String l_Name=mUsername.getText().toString();
+                String l_password=mPassword.getText().toString();
 
-                    if(l_Name.isEmpty()){
-                        Toast.makeText(loginActivity.this, "Please enter username !", Toast.LENGTH_SHORT).show();
-                    }
-                    else{}
-                    if(l_password.isEmpty()){
-                        Toast.makeText(loginActivity.this,"Please enter password !",Toast.LENGTH_SHORT).show();
-                    }
-                    else{}
+                if(l_Name.isEmpty()){
+                    Toast.makeText(loginActivity.this, "Please enter username !", Toast.LENGTH_SHORT).show();
+                }
+                else{}
+                if(l_password.isEmpty()){
+                    Toast.makeText(loginActivity.this,"Please enter password !",Toast.LENGTH_SHORT).show();
+                }
+                else{}
 
                 reference.child("app").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if(snapshot.hasChild(l_Name)) {
-                                final String getPassword=snapshot.child(l_Name).child("password").getValue(String.class);
-                                if(getPassword.equals(l_password))
-                                {
-                                    Toast.makeText(loginActivity.this, "Successfully logged in!", Toast.LENGTH_SHORT).show();
-                                    //opening new Activity
-                                    startActivity(new Intent(loginActivity.this, Homepage.class));
-                                    finish();
-                                }
-                        else {
-                                    Toast.makeText(loginActivity.this, "Wrong Password !", Toast.LENGTH_SHORT).show();
-                                }
+                            final String getPassword=snapshot.child(l_Name).child("password").getValue(String.class);
+                            if(getPassword.equals(l_password))
+                            {
+                                Toast.makeText(loginActivity.this, "Successfully logged in!", Toast.LENGTH_SHORT).show();
+                                //opening new Activity
+                                startActivity(new Intent(loginActivity.this, MainActivity.class));
+                                finish();
+                            }
+                            else {
+                                Toast.makeText(loginActivity.this, "Wrong Password !", Toast.LENGTH_SHORT).show();
+                            }
                         }
                         else{
                             Toast.makeText(loginActivity.this, "Wrong Username !", Toast.LENGTH_SHORT).show();
@@ -79,6 +79,4 @@ public class loginActivity extends AppCompatActivity {
             }
         });
     }
-
-
 }
