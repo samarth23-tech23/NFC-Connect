@@ -39,9 +39,9 @@ public class regActivity extends AppCompatActivity {
     FirebaseDatabase rootNode;
     DatabaseReference reference;
     OkHttpClient okHttpClient=new OkHttpClient();
-    TextView textView;
+    TextView textView,nfcView,passwordView;
     String encPassword,encNFCpass;
-    String txtResponse;
+    String txtResponse,substr2,substr;
     ResponseBody txtResponse2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +56,7 @@ public class regActivity extends AppCompatActivity {
         regnPass=findViewById(R.id.npId);
 
 
-        textView=findViewById(R.id.response);
+
         //Saving data into the database
        rButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,16 +65,18 @@ public class regActivity extends AppCompatActivity {
 
                 rootNode=FirebaseDatabase.getInstance();
                 reference=rootNode.getReference("app");
+
                 //Getting all the values
                 String name=reguName.getText().toString();
                 String emailId =regemail.getText().toString();
                 String password=regPass.getText().toString();
                 String NFC_Password=regnPass.getText().toString();
-
+                 substr="abc";
+                 substr2="123";
 
 
             //flask part
-                 RequestBody formbody=new FormBody.Builder().add("password","123456789").add("nfcpassword","samarth").add("activity","register").build();
+                 RequestBody formbody=new FormBody.Builder().add("password",password).add("nfcpassword",NFC_Password).add("activity","register").build();
                  Request request=new Request.Builder().url("https://karthik022.pythonanywhere.com/encrypt").post(formbody).build();
                 Toast.makeText(regActivity.this, "Encrypting...", Toast.LENGTH_SHORT).show();
                  okHttpClient.newCall(request).enqueue(new Callback() {
@@ -96,10 +98,18 @@ public class regActivity extends AppCompatActivity {
                             @Override
                             public void run() {
                                 try {
-                                  //  encPassword=response.body().string();
-                                //     encNFCpass=response.body().string();
+
                                    txtResponse= (response.body().string());
-                                   textView.setText(txtResponse);
+                                   String find="password";
+                                   String find2="nfcpassword";
+
+                                   int i=txtResponse.lastIndexOf(find);
+                                    substr=txtResponse.substring(i+12);
+                                  encPassword=substr;
+
+                                    int j=txtResponse.indexOf(find2);
+                                     substr2=txtResponse.substring(17,i);
+                                     encNFCpass=substr2;
 
                                 } catch (IOException e) {
                                     e.printStackTrace();
@@ -113,12 +123,12 @@ public class regActivity extends AppCompatActivity {
 
 
 
-                 /*
-                UserHelperClass helperClass =new UserHelperClass(name,emailId,encPassword,encNFCpass);
+//Firebase
+                UserHelperClass helperClass =new UserHelperClass(name,emailId,substr,substr2);
                 reference.child(name).setValue(helperClass);
                 Toast.makeText(regActivity.this, "Successfully Registered with Name "+ name, Toast.LENGTH_SHORT).show();
                  reference.child(name).setValue(helperClass);
-                */
+
             }
         });
     }

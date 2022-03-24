@@ -7,11 +7,11 @@ public class UserHelperClass {
         this.userName = userName;
     }
 
-    public UserHelperClass(String userName, String emailId, String password, String nPassword) {
+    public UserHelperClass(String userName, String emailId, String encPassword, String encNFCpass) {
         this.userName = userName;
         this.emailId = emailId;
-        this.password = password;
-        this.nfcPassword = nPassword;
+        this.password = encPassword;
+        this.nfcPassword =encNFCpass;
     }
 
     public String getUserName() {
@@ -34,15 +34,15 @@ public class UserHelperClass {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassword(String encPassword) {
+        this.password = encPassword;
     }
 
     public String getNfcPassword() {
         return nfcPassword;
     }
 
-    public void setNfcPassword(String nfcPassword) {
-        this.nfcPassword = nfcPassword;
+    public void setNfcPassword(String encnfcPassword) {
+        this.nfcPassword = encnfcPassword;
     }
 }

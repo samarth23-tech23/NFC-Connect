@@ -10,7 +10,9 @@
         android:id="@+id/registerButton"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".RegisterActivity">
+        tools:context=".RegisterActivity"
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="-198dp">
 
         <TextView
             android:id="@+id/textView2"
@@ -20,10 +22,9 @@
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.591"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.131" />
+            app:layout_constraintVertical_bias="0.094" />
 
         <TextView
             android:id="@+id/textView10"
@@ -76,20 +77,6 @@
             app:layout_constraintVertical_bias="0.121"
             tools:layout_editor_absoluteX="5dp" />
 
-        <Button
-            android:id="@+id/Rbutton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="rbutton"
-            android:text="Register"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.783"
-            tools:ignore="DuplicateIds" />
-
         <EditText
             android:id="@+id/eId"
             android:layout_width="wrap_content"
@@ -133,42 +120,20 @@
             app:layout_constraintTop_toBottomOf="@+id/pId"
             app:layout_constraintVertical_bias="0.187" />
 
-        <ProgressBar
-            android:id="@+id/progressBar3"
-            style="?android:attr/progressBarStyle"
+        <Button
+            android:id="@+id/regbtn2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="invisible"
-            tools:layout_editor_absoluteX="176dp"
-            tools:layout_editor_absoluteY="466dp"
-            tools:ignore="MissingConstraints" />
-
-        <TextView
-            android:id="@+id/response"
-            android:layout_width="314dp"
-            android:layout_height="108dp"
-            android:textAlignment="center"
-            android:textSize="14sp"
+            android:text="Register"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.514"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.684" />
+            app:layout_constraintVertical_bias="0.562"
+            tools:ignore="DuplicateIds" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="225dp"
-        android:layout_height="45dp"
-        android:text="Registeration form"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.591"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.131" />
 
     <TextView
         android:id="@+id/textView7"
@@ -179,18 +144,5 @@
         android:text="Enter Username:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/regbtn2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Register"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.783"
-        tools:ignore="DuplicateIds" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
