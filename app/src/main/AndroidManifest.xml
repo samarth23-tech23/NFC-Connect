@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NFCConnect">
         <activity
+            android:name=".LogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".reset"
+            android:exported="false" />
+        <activity
             android:name=".contactUs"
             android:exported="false" />
         <activity
