@@ -42,9 +42,12 @@ public class Homepage extends AppCompatActivity {
         Date currentTime=Calendar.getInstance().getTime();
         String formattedDate=DateFormat.getDateInstance(DateFormat.FULL).format(currentTime);
         String[] splitDate=formattedDate.split(",");
-        Intent intent=getIntent();
-
-        tname.setText("Welcome back "+"Samarth");
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+             name = extras.getString("username");
+            //The key argument here must match that used in the other activity
+        }
+        tname.setText("Welcome back, "+ name);
         Tmonth.setText(splitDate[1]);
         Tday.setText(splitDate[0]);
         Tyear.setText((splitDate[2]));
@@ -64,6 +67,7 @@ public class Homepage extends AppCompatActivity {
                 public void log(View r)
              {
                Intent intent=new Intent(getApplicationContext(),LogActivity.class);
+               intent.putExtra("username",name);
                startActivity(intent);
              }
             }

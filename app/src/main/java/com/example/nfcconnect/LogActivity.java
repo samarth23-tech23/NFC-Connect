@@ -28,8 +28,8 @@ import java.util.List;
 public class LogActivity extends AppCompatActivity {
     Button btn;
     TextView tv1;
-    String ma;
-    List<Model> modelList;
+    String ma,name;
+
 
 
     @Override
@@ -40,6 +40,11 @@ public class LogActivity extends AppCompatActivity {
     btn=findViewById(R.id.setBtn);
         tv1=findViewById(R.id.output);
 //reference= FirebaseDatabase.getInstance().getReference("raspberry pi").child("Logs").child(sam);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            name = extras.getString("username");
+            //The key argument here must match that used in the other activity
+        }
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,7 +56,7 @@ public class LogActivity extends AppCompatActivity {
                     for (DataSnapshot snapshot1: datasnapshot.getChildren())
                     {
 
-                         ma= snapshot1.child("sam").getValue().toString();
+                         ma= snapshot1.child(name).getValue().toString();
                         Log.d("siddhesh",ma);
                          sb.append(ma+"\n");
                         Log.d("op",ma);
