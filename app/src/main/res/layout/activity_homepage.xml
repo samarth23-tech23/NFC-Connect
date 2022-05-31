@@ -10,8 +10,8 @@
 
     <TextView
         android:id="@+id/date"
-        android:layout_width="184dp"
-        android:layout_height="44dp"
+        android:layout_width="186dp"
+        android:layout_height="53dp"
         android:text="TextView"
         android:textAlignment="textStart"
         android:textColor="#FFFFFF"
@@ -25,18 +25,18 @@
 
     <TextView
         android:id="@+id/month"
-        android:layout_width="77dp"
-        android:layout_height="35dp"
+        android:layout_width="112dp"
+        android:layout_height="45dp"
         android:layout_marginTop="52dp"
         android:text="TextView"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.024"
+        app:layout_constraintHorizontal_bias="0.053"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.012" />
+        app:layout_constraintVertical_bias="0.036" />
 
     <TextView
         android:id="@+id/year"
@@ -54,8 +54,8 @@
 
     <TextView
         android:id="@+id/tvName"
-        android:layout_width="328dp"
-        android:layout_height="51dp"
+        android:layout_width="389dp"
+        android:layout_height="46dp"
         android:textAlignment="center"
         android:textColor="#FBFBFB"
         android:textSize="34sp"
@@ -64,8 +64,8 @@
 
     <ImageButton
         android:id="@+id/imageButton2"
-        android:layout_width="169dp"
-        android:layout_height="142dp"
+        android:layout_width="171dp"
+        android:layout_height="146dp"
         android:onClick="logout"
         android:paddingLeft="100dp"
         android:paddingTop="250dp"
@@ -73,35 +73,35 @@
         android:paddingBottom="250dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.988"
+        app:layout_constraintHorizontal_bias="0.032"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintVertical_bias="0.978"
         app:srcCompat="?attr/actionModeCloseDrawable" />
 
     <ImageButton
         android:id="@+id/imageButton4"
-        android:layout_width="172dp"
-        android:layout_height="163dp"
-        android:layout_marginBottom="132dp"
+        android:layout_width="171dp"
+        android:layout_height="162dp"
+        android:layout_marginBottom="244dp"
         android:onClick="reset"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.933"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@android:drawable/stat_notify_sync" />
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="166dp"
-        android:layout_height="154dp"
+        android:layout_width="179dp"
+        android:layout_height="166dp"
         android:onClick="log"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.971"
+        app:layout_constraintHorizontal_bias="0.033"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.301"
+        app:layout_constraintVertical_bias="0.3"
         app:srcCompat="?android:attr/actionModeFindDrawable" />
 
 

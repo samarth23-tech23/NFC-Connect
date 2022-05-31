@@ -30,7 +30,6 @@ public class Homepage extends AppCompatActivity {
     String name;
     @Override
 
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
@@ -47,18 +46,19 @@ public class Homepage extends AppCompatActivity {
              name = extras.getString("username");
             //The key argument here must match that used in the other activity
         }
+        /*
         tname.setText("Welcome back, "+ name);
         Tmonth.setText(splitDate[1]);
         Tday.setText(splitDate[0]);
         Tyear.setText((splitDate[2]));
-
+*/
     }
-    public void logout(View c){
+    /*public void logout(View c){
 
         FirebaseAuth.getInstance().signOut();
         Intent i=new Intent(getApplicationContext(),MainActivity.class);
         startActivity(i);
-    }
+    }*/
     public void reset(View v) {
 
         Intent intent=new Intent(Homepage.this,reset.class);

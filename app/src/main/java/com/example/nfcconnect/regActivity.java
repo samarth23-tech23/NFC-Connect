@@ -62,13 +62,10 @@ public class regActivity extends AppCompatActivity {
         regemail=findViewById(R.id.eId);
         regPass=findViewById(R.id.pId);
         regnPass=findViewById(R.id.npId);
-        txtviw=findViewById(R.id.textView6);
+
 
 
         //Getting all the values
-
-
-
 
 
         //Saving data into the database

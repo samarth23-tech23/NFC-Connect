@@ -52,13 +52,9 @@ public class reset extends AppCompatActivity {
 
 
 
-
-        Toast.makeText(reset.this, name, Toast.LENGTH_SHORT).show();
-
         newpass.setVisibility(View.INVISIBLE);
         oldpass.setOnKeyListener(new View.OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // If the event is a key-down event on the "enter" button
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
                         (keyCode == KeyEvent.KEYCODE_ENTER)) {
                     // Perform action on key press
@@ -125,7 +121,6 @@ public class reset extends AppCompatActivity {
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-
                         }
                     });
 
@@ -145,10 +140,10 @@ public class reset extends AppCompatActivity {
                     // Perform action on key press
                     newP=newpass.getText().toString();
 
-                    RequestBody formbody=new FormBody.Builder().add("activity","nfcreset").add("newnfcpassword",newP).build();
-                    Request request=new Request.Builder().url("https://karthik022.pythonanywhere.com/encrypt").post(formbody).build();
+                    RequestBody formbody2=new FormBody.Builder().add("activity","nfcreset").add("newnfcpassword",newP).build();
+                    Request request2=new Request.Builder().url("https://karthik022.pythonanywhere.com/encrypt").post(formbody2).build();
                     Toast.makeText(getApplicationContext(), "Encrypting...", Toast.LENGTH_SHORT).show();
-                    okHttpClient.newCall(request).enqueue(new Callback() {
+                    okHttpClient.newCall(request2).enqueue(new Callback() {
                         @Override
                         public void onFailure(Call call, IOException e) {
                             runOnUiThread(new Runnable() {
@@ -177,23 +172,21 @@ public class reset extends AppCompatActivity {
                                     String in=txtResponse;
                                     try {
                                         JSONObject reader = new JSONObject(in);
-                                        
-                                        encNFCpass=reader.getString("newnfcpassword");
 
+                                        encNFCpass=reader.getString("newnfcpassword");
                                         Key=reader.getString("key");
+
                                         combinedUP=username+":"+encNFCpass;
-                                //        Toast.makeText(reset.this, encNFCpass, Toast.LENGTH_SHORT).show();
+
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
-
-
                                 }
                             });
 
                         }
                     });
-                    
+
                     return true;
                 }
                 return false;
@@ -207,53 +200,12 @@ public class reset extends AppCompatActivity {
         resetBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //For Stopping reading service
-                RequestBody formbody = new FormBody.Builder().add("control", "stop").build();
-                Request request = new Request.Builder().url("https://raspi-nfcapi.socketxp.com/control").post(formbody).build();
-                Toast.makeText(reset.this, "Stopping reading service", Toast.LENGTH_SHORT).show();
-
-                okHttpClient.newCall(request).enqueue(new Callback() {
-                    @Override
-                    public void onFailure(Call call, IOException e) {
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(getApplicationContext(), "Socket response error", Toast.LENGTH_LONG).show();
-                            }
-                        });
-                    }
-
-                    @Override
-                    public void onResponse(Call call, Response response) throws IOException {
-
-
-                        runOnUiThread(new Runnable() {
-
-                            @Override
-                            public void run() {
-
-                                try {
-                                    txtResponse= (response.body().string());
-                                    Toast.makeText(reset.this, txtResponse, Toast.LENGTH_LONG).show();
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
-
-                            }
-                        });
-
-                    }
-                });
-
-
-
-                if(txtResponse=="done"){
-                    //For resetting
-                    RequestBody formbody2 = new FormBody.Builder().add("resetpassword",combinedUP).add("activity", "reset").build();
-                    Request request2 = new Request.Builder().url("https://raspi-nfcapi.socketxp.com/reset").post(formbody2).build();
+                //For resetting
+                    RequestBody formbody3 = new FormBody.Builder().add("resetpassword",combinedUP).add("activity", "reset").build();
+                    Request request3 = new Request.Builder().url("https://raspi-nfcapi.socketxp.com/reset").post(formbody3).build();
                     Toast.makeText(reset.this, "Sending to Raspberry PI", Toast.LENGTH_SHORT).show();
 
-                    okHttpClient.newCall(request2).enqueue(new Callback() {
+                    okHttpClient.newCall(request3).enqueue(new Callback() {
                         @Override
                         public void onFailure(Call call, IOException e) {
                             runOnUiThread(new Runnable() {
@@ -266,8 +218,6 @@ public class reset extends AppCompatActivity {
 
                         @Override
                         public void onResponse(Call call, Response response) throws IOException {
-
-
                             runOnUiThread(new Runnable() {
 
                                 @Override
@@ -285,63 +235,15 @@ public class reset extends AppCompatActivity {
 
                         }
                     });
+                rootNode=FirebaseDatabase.getInstance();
+                reference=rootNode.getReference("app");
 
-                }
-                else{
-                    Toast.makeText(reset.this, "Error while stopping service", Toast.LENGTH_LONG).show();
-                }
-
-                //Restarting the reading service
-                if(txtResponse2=="done"){
-                    RequestBody formbody3 = new FormBody.Builder().add("control", "start").build();
-                    Request request3 = new Request.Builder().url("https://raspi-nfcapi.socketxp.com/control").post(formbody3).build();
-                    Toast.makeText(reset.this, "Stopping reading service", Toast.LENGTH_SHORT).show();
-
-                    okHttpClient.newCall(request3).enqueue(new Callback() {
-                        @Override
-                        public void onFailure(Call call, IOException e) {
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    Toast.makeText(getApplicationContext(), "Socket response error", Toast.LENGTH_LONG).show();
-                                }
-                            });
-                        }
-
-                        @Override
-                        public void onResponse(Call call, Response response) throws IOException {
-
-
-                            runOnUiThread(new Runnable() {
-
-                                @Override
-                                public void run() {
-
-                                    try {
-                                        txtResponse3= (response.body().string());
-                                        Toast.makeText(reset.this, txtResponse, Toast.LENGTH_SHORT).show();
-
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
-                                    }
-
-                                }
-                            });
-
-                        }
-                    });
-                }
-                else{
-                    Toast.makeText(reset.this, "Error in starting reading service", Toast.LENGTH_SHORT).show();
-                }
-
-
-
+                //Firebase
+                UserHelperClass2 helperClass =new UserHelperClass2(username,encNFCpass,Key);
+                reference.child(username).setValue(helperClass);
 
             }
         });
-
-
 
 
         chkBtn.setOnClickListener(new View.OnClickListener() {
@@ -355,5 +257,8 @@ public class reset extends AppCompatActivity {
                 }
             }
         });
+
+
     }
+
 }

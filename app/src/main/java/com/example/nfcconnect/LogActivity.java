@@ -36,7 +36,6 @@ public class LogActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log);
-
     btn=findViewById(R.id.setBtn);
         tv1=findViewById(R.id.output);
 //reference= FirebaseDatabase.getInstance().getReference("raspberry pi").child("Logs").child(sam);
